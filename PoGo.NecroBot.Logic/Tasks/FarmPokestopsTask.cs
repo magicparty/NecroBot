@@ -77,13 +77,29 @@ namespace PoGo.NecroBot.Logic.Tasks
                         i =>
                             LocationUtils.CalculateDistanceInMeters(session.Client.CurrentLatitude,
                                 session.Client.CurrentLongitude, i.Latitude, i.Longitude)).ToList();
-
                 // randomize next pokestop between first and second by distance
                 var pokestopListNum = 0;
-                if (pokestopList.Count >= 1)
-                {
-                    pokestopListNum = rc.Next(0, 2);
+                var FortIdx = -1;
+                string TargetFortId = Logic.Tasks.AssignFortTargetTask.getTargetFortId();
+                if(TargetFortId != "") {
+                    FortIdx = pokestopList.FindIndex(fd => fd.Id == TargetFortId);
                 }
+                if (FortIdx >= 0)
+                {
+                    pokestopListNum = FortIdx;
+                    session.EventDispatcher.Send(new NoticeEvent
+                    {
+                        Message = "Assign FortTargetId:" + FortIdx.ToString()
+                    });
+                }
+                else
+                {
+                    if (pokestopList.Count >= 1)
+                    {
+                        pokestopListNum = rc.Next(0, 2);
+                    }
+                }
+
                 var pokeStop = pokestopList[pokestopListNum];
                 pokestopList.RemoveAt(pokestopListNum);
 

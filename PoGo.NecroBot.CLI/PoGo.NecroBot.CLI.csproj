@@ -248,6 +248,7 @@
     <Compile Include="SimpleSession.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebSocketHandler\ActionCommands\AssignFortTargetHandler.cs" />
     <Compile Include="WebSocketHandler\GetCommands\Events\WebResponce.cs" />
     <Compile Include="WebSocketHandler\GetCommands\Events\EggListResponce.cs" />
     <Compile Include="WebSocketHandler\GetCommands\Events\ItemListResponce.cs" />
@@ -319,10 +320,10 @@
     <None Include="Config\Translations\translation.it.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-	<None Include="Config\Translations\translation.ja-JP.json">
+    <None Include="Config\Translations\translation.ja-JP.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-	<None Include="Config\Translations\translation.kh.json">
+    <None Include="Config\Translations\translation.kh.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Config\Translations\translation.lt.json">
