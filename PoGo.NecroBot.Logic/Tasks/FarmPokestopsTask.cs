@@ -220,10 +220,10 @@ namespace PoGo.NecroBot.Logic.Tasks
                     storeRI = rc.Next(6, 12); //set new storeRI for new random value
                     stopsHit = 0;
 
-                    if (session.LogicSettings.DelayBetweenRecycleActions)
-                        await RecycleItemsTask.Execute(session, cancellationToken);
+                    await RecycleItemsTask.Execute(session, cancellationToken);
 
-                    DelayingUtils.Delay(session.LogicSettings.DelayBetweenPlayerActions, 500);
+                    if (session.LogicSettings.DelayBetweenRecycleActions)
+                        DelayingUtils.Delay(session.LogicSettings.DelayBetweenPlayerActions, 500);
 
                     if (session.LogicSettings.EvolveAllPokemonWithEnoughCandy ||
                         session.LogicSettings.EvolveAllPokemonAboveIv ||
